@@ -363,24 +363,71 @@
 
 <!-- PASS -->
 <div id="pg-pass" class="page">
-  <div class="result-wrap">
+  <div style="text-align:center;padding:0.5rem 0 0.75rem">
     <div class="result-score" id="pass-score"></div>
     <div class="result-label" id="pass-label"></div>
-    <div class="cert-wrap">
-      <div class="cert-seal"><img id="logo-cert" src="" alt="Phuc Tea"></div>
-      <div class="cert-title">Chứng Nhận Hoàn Thành</div>
-      <div class="cert-body">
-        Chúc mừng<br>
-        <div class="cert-name" id="cert-name"></div>
-        <div class="cert-branch" id="cert-branch"></div>
-        đã hoàn thành xuất sắc<br>
-        <strong>Khóa học Chăm Sóc Khách Hàng Phúc Tea</strong><br><br>
-        <span style="font-size:11px;color:#3B6D11;font-style:italic">Lắng nghe từng nhu cầu khách hàng — tư vấn tận tâm từng sản phẩm</span>
+  </div>
+
+  <!-- CERTIFICATE CARD -->
+  <div id="cert-card" style="position:relative;overflow:hidden;background:#fff;border:2px solid #c9a84c;border-radius:12px;padding:44px 36px 36px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.13);margin-bottom:1rem">
+
+    <!-- Sóng teal trái trên -->
+    <svg style="position:absolute;top:0;left:0;width:190px;pointer-events:none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 Q70,10 50,90 Q30,160 90,200 L0,200 Z" fill="#1a6b5a"/>
+      <path d="M0,0 Q55,25 35,100 Q15,160 65,200 L0,200 Z" fill="#22836e" opacity="0.55"/>
+      <path d="M0,130 Q45,148 25,200 L0,200 Z" fill="#c9a84c" opacity="0.85"/>
+      <path d="M0,108 Q55,130 35,200 L0,200 Z" fill="#c9a84c" opacity="0.38"/>
+    </svg>
+
+    <!-- Sóng teal phải dưới -->
+    <svg style="position:absolute;bottom:0;right:0;width:190px;pointer-events:none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200,200 Q130,190 150,110 Q170,40 110,0 L200,0 Z" fill="#1a6b5a"/>
+      <path d="M200,200 Q145,175 165,100 Q185,40 135,0 L200,0 Z" fill="#22836e" opacity="0.55"/>
+      <path d="M200,70 Q155,52 175,0 L200,0 Z" fill="#c9a84c" opacity="0.85"/>
+      <path d="M200,92 Q145,70 165,0 L200,0 Z" fill="#c9a84c" opacity="0.38"/>
+    </svg>
+
+
+
+    <!-- Logo Phúc Tea căn giữa trên cùng -->
+    <div style="position:relative;z-index:2;margin-bottom:10px">
+      <img id="logo-cert" src="" alt="Phuc Tea" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid #c9a84c;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.15)">
+    </div>
+
+    <!-- Nội dung chính -->
+    <div style="position:relative;z-index:2">
+      <div style="font-size:30px;font-weight:700;color:#1a6b5a;letter-spacing:5px;font-family:Georgia,serif;margin-bottom:8px;text-transform:uppercase">CHỨNG NHẬN</div>
+
+      <div style="display:inline-block;background:#c9a84c;color:#fff;font-size:10px;font-weight:700;letter-spacing:2.5px;padding:4px 20px;border-radius:2px;margin-bottom:20px;text-transform:uppercase">ĐÀO TẠO CHĂM SÓC KHÁCH HÀNG</div>
+
+      <div id="cert-name" style="font-size:28px;font-weight:700;color:#1a3d2b;font-family:Georgia,serif;font-style:italic;margin-bottom:10px;line-height:1.25"></div>
+
+      <div style="width:55%;height:1.5px;background:linear-gradient(90deg,transparent,#c9a84c 30%,#c9a84c 70%,transparent);margin:0 auto 16px"></div>
+
+      <div style="font-size:12px;font-weight:700;letter-spacing:2.5px;color:#2a2a2a;text-transform:uppercase;margin-bottom:5px">ĐÃ HOÀN THÀNH XUẤT SẮC KHÓA HỌC</div>
+      <div style="font-size:12px;color:#1a6b5a;font-weight:600;margin-bottom:3px">CHĂM SÓC KHÁCH HÀNG — PHÚC TEA</div>
+      <div id="cert-branch" style="font-size:11px;color:#888;margin-bottom:20px;text-transform:uppercase"></div>
+
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;padding:0 6%;margin-top:12px">
+        <div style="text-align:center">
+          <div id="cert-date-display" style="font-size:11px;color:#777;font-style:italic;margin-bottom:6px"></div>
+          <div style="width:110px;height:1px;background:#aaa;margin:0 auto"></div>
+          <div style="font-size:9px;color:#aaa;margin-top:4px;letter-spacing:1.5px;text-transform:uppercase">NGÀY HOÀN THÀNH</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:11px;font-weight:600;color:#1a3d2b;margin-bottom:2px">CHÂU THÚY NGỌC</div>
+          <div style="width:110px;height:1px;background:#aaa;margin:0 auto 4px"></div>
+          <div style="font-size:9px;color:#aaa;letter-spacing:1.5px;text-transform:uppercase">LEADER CSKH</div>
+        </div>
       </div>
     </div>
-    <div class="cert-note" id="cert-note"></div>
-    <div class="saving-indicator" id="saving-msg">⏳ Đang lưu kết quả vào Google Sheet...</div>
-    <button class="btn-secondary" onclick="goHome()" style="width:100%;margin-top:12px">Về trang chủ</button>
+  </div><!-- /cert-card -->
+
+  <div class="saving-indicator" id="saving-msg" style="display:none;text-align:center;padding:8px;font-size:13px;color:#3B6D11;background:#EAF3DE;border-radius:6px;margin-bottom:8px">📤 Đang gửi kết quả...</div>
+  <div id="cert-note" style="font-size:11px;color:#999;text-align:center;margin-bottom:8px"></div>
+  <div style="display:flex;gap:8px">
+    <button class="btn-secondary" onclick="goHome()" style="flex:1">Về trang chủ</button>
+    <button class="btn-primary" onclick="printCert()" style="flex:1">🖨️ In chứng nhận</button>
   </div>
 </div>
 
@@ -390,7 +437,7 @@
     <div class="fail-score" id="fail-score"></div>
     <div class="result-label" id="fail-label"></div>
     <div class="fail-note">Bạn cần đạt tối thiểu <strong>90%</strong> (14/15 câu đúng) để hoàn thành khóa học.<br>Hãy ôn lại các phần và thử lại nhé! 💪</div>
-    <div class="saving-indicator" id="saving-msg-fail">⏳ Đang lưu kết quả vào Google Sheet...</div>
+    <div class="saving-indicator" id="saving-msg-fail">📤 Đang gửi kết quả...</div>
     <button class="btn-primary" style="width:100%;margin-bottom:10px;margin-top:12px" onclick="goHome()">Ôn lại bài học</button>
     <button class="btn-secondary" style="width:100%" onclick="retakeQuiz()">Thi lại (giữ thông tin)</button>
   </div>
@@ -410,7 +457,7 @@ function setLogos(){
 document.addEventListener('DOMContentLoaded', setLogos);
 
 const LETTERS=['A','B','C','D'];
-const SHEET_URL='https://script.google.com/macros/s/APPS_SCRIPT_ID/exec';
+const MANAGER_EMAIL='ngocchou2341999@gmail.com';
 
 const ANSWERS_EXPLAIN=[
   "Đội CSKH có 3 vai trò chính: Hỗ trợ khách hàng, tạo Doanh thu Online và Hỗ trợ cửa hàng vận hành.",
@@ -418,15 +465,15 @@ const ANSWERS_EXPLAIN=[
   "Cả 3 thông tin đều bắt buộc cập nhật: món hết, topping hết và thời gian có thể nhận đơn giao hàng.",
   "Zalo OA và Web Order là 2 kênh khách tự đặt. Call Center là kênh khách đặt qua đội CSKH.",
   "Trước khi xác nhận đơn cần làm đủ cả 3 việc: kiểm tra món, kiểm tra địa chỉ và báo phí ship để khách đồng ý.",
-  "Hóa đơn từ 50.000đ được miễn phí giao hàng trong 3km đầu tiên.",
+  "Khi cửa hàng chưa cập nhật thông tin hết nguyên liệu, đội CSKH sẽ tiếp tục tư vấn và nhận đơn cho món đó, dẫn đến phải hủy đơn và khách hàng thất vọng.",
   "Học khóa đào tạo giúp cửa hàng hiểu flow phối hợp, giảm sai sót vận hành và nâng trải nghiệm khách hàng — cả 3 lý do đều đúng.",
   "Cập nhật thông tin đầy đủ và đúng thời điểm là yếu tố then chốt để cửa hàng và đội CSKH phối hợp trơn tru.",
   "Hóa đơn từ 65.000đ được miễn phí giao hàng trong 5km đầu tiên.",
   "Mỗi km ngoài phạm vi miễn phí sẽ tính thêm 5.000đ/km.",
-  "Phản hồi khách hàng giúp cải thiện trải nghiệm, tối ưu vận hành và hạn chế lặp lại sai sót — cả 3 lý do đều đúng.",
+  "Mọi thông tin dù nhỏ đều quan trọng trong vận hành. Thiếu một thông tin có thể khiến CSKH tư vấn sai, dẫn đến hủy đơn hoặc khách hàng không hài lòng.",
   "Đơn từ đội CSKH sẽ được gửi đến cửa hàng qua cả Messenger nhận đơn và IPOS CallCenter.",
   "Làm nước trước khi khách xác nhận phí ship rất dễ dẫn đến huỷ đơn và thất thoát nguyên liệu, chi phí.",
-  "Cập nhật thông tin đầy đủ và đúng thời điểm là nền tảng để mọi phối hợp giữa cửa hàng và đội CSKH diễn ra hiệu quả.",
+  "Quy trình chuẩn của nhân sự cửa hàng là: Order → Bấm bill → Nhập thông tin khách hàng → Làm nước → Giao hàng.",
   "Mục tiêu cốt lõi của khóa đào tạo là giúp cửa hàng hiểu cách phối hợp để vận hành hiệu quả hơn, không chỉ học thuộc quy trình."
 ];
 
@@ -436,15 +483,15 @@ const QUESTIONS=[
   {q:"Thông tin nào cần cập nhật cho CSKH?",opts:["Món hết hàng","Topping hết hàng","Thời gian nhận đơn","Tất cả đáp án trên"],ans:3},
   {q:"Nguồn đơn hàng nào khách tự đặt?",opts:["Zalo OA","Web Order","Cả A và B","Call Center"],ans:2},
   {q:"Trước khi xác nhận đơn cần làm gì?",opts:["Kiểm tra món","Kiểm tra địa chỉ","Báo phí ship","Tất cả đáp án trên"],ans:3},
-  {q:"Miễn phí giao hàng 3km áp dụng cho hóa đơn từ bao nhiêu?",opts:["30.000đ","40.000đ","50.000đ","70.000đ"],ans:2},
+  {q:"Cửa hàng hết nguyên liệu nhưng chưa cập nhật cho đội CSKH. Điều gì dễ xảy ra nhất?",opts:["Đội CSKH tiếp tục tư vấn khách đặt món không thể làm","Không ảnh hưởng gì","Tăng doanh thu","Tăng tốc độ vận hành"],ans:0},
   {q:"Tại sao cửa hàng cần học khóa đào tạo này trước khi vận hành?",opts:["Để hiểu flow phối hợp với hệ thống","Để giảm sai sót vận hành","Để nâng trải nghiệm khách hàng","Tất cả đáp án trên"],ans:3},
   {q:"Điều quan trọng nhất để phối hợp hiệu quả giữa cửa hàng và đội CSKH là gì?",opts:["Tốc độ phản hồi","Cập nhật thông tin đầy đủ và đúng thời điểm","Chỉ tập trung làm món","Chỉ xử lý đơn hàng"],ans:1},
   {q:"Miễn phí giao hàng 5km áp dụng từ hóa đơn bao nhiêu?",opts:["50.000đ","55.000đ","65.000đ","80.000đ"],ans:2},
   {q:"Phí mỗi km tiếp theo (ngoài phạm vi miễn phí) là bao nhiêu?",opts:["2.000đ","3.000đ","5.000đ","10.000đ"],ans:2},
-  {q:"Vì sao cửa hàng cần phối hợp phản hồi khách hàng cùng đội CSKH?",opts:["Để cải thiện trải nghiệm khách hàng","Để tối ưu vận hành","Để hạn chế lặp lại sai sót","Tất cả đáp án trên"],ans:3},
+  {q:"Cửa hàng nghĩ rằng \"thiếu 1 thông tin nhỏ sẽ không ảnh hưởng\". Theo nội dung khóa học, nhận định này:",opts:["Đúng hoàn toàn","Sai — một thông tin thiếu có thể ảnh hưởng vận hành và trải nghiệm khách hàng","Chỉ đúng với ngày đông khách","Chỉ đúng với đơn giao hàng"],ans:1},
   {q:"Đơn từ CSKH sẽ được gửi đến cửa hàng qua đâu?",opts:["Messenger nhận đơn","IPOS","Cả A và B","Email"],ans:2},
   {q:"Khách chưa xác nhận phí giao hàng nhưng cửa hàng đã làm nước. Điều gì có thể xảy ra?",opts:["Không có vấn đề gì","Tăng doanh thu","Rủi ro huỷ đơn và thất thoát chi phí","Khách sẽ vui hơn"],ans:2},
-  {q:"Yếu tố cốt lõi để cửa hàng và đội CSKH phối hợp trơn tru là gì?",opts:["Tốc độ phản hồi","Cập nhật thông tin đầy đủ và đúng thời điểm","Chỉ tập trung làm món","Chỉ xử lý đơn hàng"],ans:1},
+  {q:"Quy trình xử lý đơn hàng đúng của nhân sự cửa hàng là gì?",opts:["Làm nước → Bấm bill → Giao hàng","Order → Bấm bill → Nhập thông tin khách → Làm nước → Giao hàng","Nhận đơn → Giao hàng → Hoàn thành","Xác nhận → Làm nước → Thu tiền"],ans:1},
   {q:"Theo Anh/Chị, nội dung quan trọng nhất của khóa đào tạo này là gì?",opts:["Học thuộc quy trình","Hiểu cách phối hợp để cửa hàng vận hành hiệu quả hơn","Chỉ cần biết nhận đơn","Chỉ cần biết CTKM"],ans:1}
 ];
 
@@ -546,6 +593,12 @@ function showResult(){
     document.getElementById('cert-name').textContent=userData.name;
     document.getElementById('cert-branch').textContent='Chi nhánh: '+userData.branch;
     document.getElementById('cert-note').textContent='Chứng nhận ghi nhận cho: '+userData.email;
+    const _now=new Date();
+    const _ds='Ngày '+_now.getDate()+', Tháng '+(_now.getMonth()+1)+', Năm '+_now.getFullYear();
+    const _el=document.getElementById('cert-date-display');
+    if(_el) _el.textContent=_ds;
+    const _lc=document.getElementById('logo-cert');
+    if(_lc) _lc.src=LOGO_SRC;
     showPage('pg-pass');
     document.getElementById('saving-msg').style.display='block';
   } else {
@@ -557,18 +610,58 @@ function showResult(){
 }
 
 async function saveToSheet(data){
+  ['saving-msg','saving-msg-fail'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){el.style.display='block';el.textContent='📤 Đang gửi kết quả về Gmail...';}
+  });
   try{
-    await fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    ['saving-msg','saving-msg-fail'].forEach(id=>{
-      const el=document.getElementById(id);
-      if(el&&el.style.display!=='none') el.textContent='✅ Đã lưu kết quả vào Google Sheet!';
+    const htmlBody=`
+<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
+  <div style="background:#3B6D11;color:white;padding:16px 20px;border-radius:8px 8px 0 0">
+    <h2 style="margin:0;font-size:18px">🦌 PHUC TEA — Kết quả bài kiểm tra CSKH</h2>
+  </div>
+  <div style="border:1px solid #ddd;border-top:none;padding:20px;border-radius:0 0 8px 8px">
+    <table style="width:100%;border-collapse:collapse;font-size:14px">
+      <tr style="background:#EAF3DE"><td style="padding:8px 12px;font-weight:bold;width:40%">Họ tên</td><td style="padding:8px 12px">${data.hoTen}</td></tr>
+      <tr><td style="padding:8px 12px;font-weight:bold;background:#f9f9f9">Chi nhánh</td><td style="padding:8px 12px;background:#f9f9f9">${data.chiNhanh}</td></tr>
+      <tr style="background:#EAF3DE"><td style="padding:8px 12px;font-weight:bold">Gmail học viên</td><td style="padding:8px 12px">${data.gmail}</td></tr>
+      <tr><td style="padding:8px 12px;font-weight:bold;background:#f9f9f9">Số câu đúng</td><td style="padding:8px 12px;background:#f9f9f9">${data.soCauDung}/${data.tongCau}</td></tr>
+      <tr style="background:#EAF3DE"><td style="padding:8px 12px;font-weight:bold">Phần trăm</td><td style="padding:8px 12px;font-size:18px;font-weight:bold;color:${data.ketQua==='ĐẠT'?'#27500A':'#c0392b'}">${data.phanTram}</td></tr>
+      <tr><td style="padding:8px 12px;font-weight:bold;background:#f9f9f9">Kết quả</td><td style="padding:8px 12px;background:#f9f9f9;font-weight:bold;font-size:16px;color:${data.ketQua==='ĐẠT'?'#27500A':'#c0392b'}">${data.ketQua==='ĐẠT'?'✅ ĐẠT':'❌ CHƯA ĐẠT'}</td></tr>
+      <tr style="background:#EAF3DE"><td style="padding:8px 12px;font-weight:bold">Thời gian</td><td style="padding:8px 12px">${data.thoiGian}</td></tr>
+    </table>
+  </div>
+</div>`;
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:500,
+        mcp_servers:[{type:'url',url:'https://gmailmcp.googleapis.com/mcp/v1',name:'gmail-mcp'}],
+        messages:[{role:'user',content:`Gửi email đến ${MANAGER_EMAIL} với subject "[PHUC TEA] Kết quả kiểm tra: ${data.hoTen} — ${data.chiNhanh} — ${data.ketQua}" và html body sau (chỉ gửi, không cần giải thích): ${htmlBody}`}]
+      })
     });
+    if(resp.ok){
+      ['saving-msg','saving-msg-fail'].forEach(id=>{
+        const el=document.getElementById(id);
+        if(el&&el.style.display!=='none') el.textContent='✅ Đã gửi kết quả về Gmail quản lý!';
+      });
+    } else { throw new Error('HTTP '+resp.status); }
   }catch(e){
     ['saving-msg','saving-msg-fail'].forEach(id=>{
       const el=document.getElementById(id);
-      if(el&&el.style.display!=='none') el.textContent='(Chưa kết nối Sheet — liên hệ quản lý để cấu hình)';
+      if(el&&el.style.display!=='none') el.textContent='⚠️ Không gửi được — vui lòng chụp màn hình và gửi cho quản lý.';
     });
   }
+}
+
+function printCert(){
+  const cert=document.getElementById('cert-card');
+  if(!cert){alert('Không tìm thấy chứng nhận!');return;}
+  const win=window.open('','_blank','width=860,height=620');
+  win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Chứng Nhận — Phúc Tea</title><style>*{box-sizing:border-box;margin:0;padding:0}body{background:#f0f0e8;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;font-family:-apple-system,BlinkMacSystemFont,sans-serif}#wrap{max-width:680px;width:100%}@media print{body{background:#fff;padding:0}}</style></head><body><div id="wrap">'+cert.outerHTML+'</div><script>window.onload=function(){setTimeout(function(){window.print();},400);}<\/script></body></html>');
+  win.document.close();
 }
 </script>
 </body>
