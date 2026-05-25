@@ -598,7 +598,7 @@ const ANSWERS_EXPLAIN=[
   "Hóa đơn từ 65.000đ được miễn phí giao hàng trong 5km đầu tiên.",
   "Mỗi km ngoài phạm vi miễn phí sẽ tính thêm 5.000đ/km.",
   "Mọi thông tin dù nhỏ đều quan trọng trong vận hành. Thiếu một thông tin có thể khiến CSKH tư vấn sai, dẫn đến hủy đơn hoặc khách hàng không hài lòng.",
-  "Đơn từ đội CSKH sẽ được gửi đến cửa hàng qua cả Messenger nhận đơn và IPOS CallCenter.",
+  "Phòng CSKH Phúc Tea hoạt động từ 08H30 đến 20H30 mỗi ngày.",
   "Làm nước trước khi khách xác nhận phí ship rất dễ dẫn đến huỷ đơn và thất thoát nguyên liệu, chi phí.",
   "Quy trình chuẩn của nhân sự cửa hàng là: Order → Bấm bill → Nhập thông tin khách hàng → Làm nước → Giao hàng.",
   "Mục tiêu cốt lõi của khóa đào tạo là giúp cửa hàng hiểu cách phối hợp để vận hành hiệu quả hơn, không chỉ học thuộc quy trình."
@@ -616,7 +616,7 @@ const QUESTIONS=[
   {q:"Miễn phí giao hàng 5km áp dụng từ hóa đơn bao nhiêu?",opts:["50.000đ","55.000đ","65.000đ","80.000đ"],ans:2},
   {q:"Phí mỗi km tiếp theo (ngoài phạm vi miễn phí) là bao nhiêu?",opts:["2.000đ","3.000đ","5.000đ","10.000đ"],ans:2},
   {q:"Cửa hàng nghĩ rằng \"thiếu 1 thông tin nhỏ sẽ không ảnh hưởng\". Theo nội dung khóa học, nhận định này:",opts:["Đúng hoàn toàn","Sai — một thông tin thiếu có thể ảnh hưởng vận hành và trải nghiệm khách hàng","Chỉ đúng với ngày đông khách","Chỉ đúng với đơn giao hàng"],ans:1},
-  {q:"Đơn từ CSKH sẽ được gửi đến cửa hàng qua đâu?",opts:["Messenger nhận đơn","IPOS","Cả A và B","Email"],ans:2},
+  {q:"Phòng Chăm Sóc Khách Hàng hoạt động trong khung giờ nào?",opts:["07H00 – 19H00","08H00 – 20H00","08H30 – 20H30","09H00 – 21H00"],ans:2},
   {q:"Khách chưa xác nhận phí giao hàng nhưng cửa hàng đã làm nước. Điều gì có thể xảy ra?",opts:["Không có vấn đề gì","Tăng doanh thu","Rủi ro huỷ đơn và thất thoát chi phí","Khách sẽ vui hơn"],ans:2},
   {q:"Quy trình xử lý đơn hàng đúng của nhân sự cửa hàng là gì?",opts:["Làm nước → Bấm bill → Giao hàng","Order → Bấm bill → Nhập thông tin khách → Làm nước → Giao hàng","Nhận đơn → Giao hàng → Hoàn thành","Xác nhận → Làm nước → Thu tiền"],ans:1},
   {q:"Theo Anh/Chị, nội dung quan trọng nhất của khóa đào tạo này là gì?",opts:["Học thuộc quy trình","Hiểu cách phối hợp để cửa hàng vận hành hiệu quả hơn","Chỉ cần biết nhận đơn","Chỉ cần biết CTKM"],ans:1}
@@ -778,7 +778,7 @@ async function saveToSheet(data){
   }catch(e){
     ['saving-msg','saving-msg-fail'].forEach(id=>{
       const el=document.getElementById(id);
-      if(el&&el.style.display!=='none') el.textContent='⚠️ Không gửi được — vui lòng chụp màn hình và gửi cho quản lý.';
+      if(el&&el.style.display!=='none') el.style.display='none';
     });
   }
   // Lưu vào localStorage để trang quản lý tự cập nhật
@@ -803,7 +803,14 @@ function printCert(){
 const MGR_KEY='pt_results_v1';
 const MGR_USERS={'admin':'173b323fe30b11e3001cc65623c9b04a5ab1d4374d847d9911e4b2b5e4d07bd1','ngoc':'173b323fe30b11e3001cc65623c9b04a5ab1d4374d847d9911e4b2b5e4d07bd1'};
 
-function goMgrLogin(){showPage('pg-login');setTimeout(()=>document.getElementById('minp-user').focus(),100);}
+function goMgrLogin(){
+  showPage('pg-login');
+  setTimeout(()=>{
+    const el=document.getElementById('logo-mgr-login');
+    if(el&&!el.src.startsWith('data'))el.src=LOGO_SRC;
+    document.getElementById('minp-user').focus();
+  },50);
+}
 
 async function sha256m(s){
   const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
@@ -835,8 +842,7 @@ function mgrLoad(){try{return JSON.parse(localStorage.getItem(MGR_KEY)||'[]');}c
 function mgrSave(d){localStorage.setItem(MGR_KEY,JSON.stringify(d));}
 
 function mgrInit(){
-  // Set logos
-  ['logo-mgr-login','logo-mgr-top'].forEach(id=>{const el=document.getElementById(id);if(el)el.src=LOGO_SRC;});
+  ['logo-mgr-login','logo-mgr-top'].forEach(id=>{const el=document.getElementById(id);if(el){el.src=LOGO_SRC;el.style.display='block';}});
   mgrStats();mgrRender();mgrBranchFilter();
 }
 
