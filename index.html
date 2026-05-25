@@ -98,6 +98,60 @@
   .fail-note{background:#FCEBEB;border:1px solid #F09595;border-radius:8px;padding:1rem;font-size:13px;color:#7B1010;margin-bottom:1.5rem;line-height:1.5}
   .saving-indicator{font-size:12px;color:#3B6D11;text-align:center;padding:8px;background:#EAF3DE;border-radius:6px;margin-top:10px;display:none}
   @media(max-width:480px){body{padding:16px 12px}.result-score,.fail-score{font-size:42px}}
+
+  /* ── MANAGER ── */
+  #pg-login{background:#f5f5f0}
+  .lcard{background:#fff;border-radius:16px;padding:2rem 1.75rem;width:100%;max-width:360px;box-shadow:0 8px 40px rgba(0,0,0,.10);border:1px solid #e8e8e8;margin:0 auto}
+  .lcard .llogo{text-align:center;margin-bottom:1.25rem}
+  .lcard .llogo img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid #97C459}
+  .lcard .lbrand{font-size:17px;font-weight:700;color:#27500A;margin-top:8px}
+  .lcard .lsub{font-size:11px;color:#888;margin-top:2px}
+  .lerr{font-size:12px;color:#c0392b;background:#FCEBEB;padding:8px 12px;border-radius:6px;margin-bottom:1rem;display:none}
+  .lerr.show{display:block}
+  .lfield{margin-bottom:.9rem}
+  .lfield label{display:block;font-size:12px;font-weight:600;color:#555;margin-bottom:4px}
+  .lfield input{width:100%;padding:9px 13px;border:1px solid #ddd;border-radius:8px;font-size:13px;outline:none;transition:border-color .15s}
+  .lfield input:focus{border-color:#3B6D11;box-shadow:0 0 0 3px rgba(59,109,17,.10)}
+  #pg-manager{background:#f5f5f0;padding-bottom:40px}
+  .mbar{background:#3B6D11;color:#EAF3DE;padding:0 20px;height:52px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:200;margin-bottom:20px}
+  .mbar img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid #97C459}
+  .mbar .mbrand{font-size:14px;font-weight:600}
+  .mbar .msub{font-size:11px;color:#C0DD97}
+  .mbar .sp{flex:1}
+  .mbtn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#EAF3DE;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer}
+  .mbtn:hover{background:rgba(255,255,255,.25)}
+  .mbody{max-width:1000px;margin:0 auto;padding:0 14px}
+  .srow{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px}
+  .sc{background:#fff;border:1px solid #e8e8e8;border-radius:10px;padding:.9rem 1.1rem}
+  .sc .sl{font-size:11px;color:#999;margin-bottom:3px}
+  .sc .sv{font-size:26px;font-weight:700;color:#1a1a1a}
+  .sc.g .sv{color:#27500A}.sc.r .sv{color:#c0392b}.sc.a .sv{color:#854F0B}
+  .fbar{background:#fff;border:1px solid #e8e8e8;border-radius:10px;padding:.9rem 1.1rem;margin-bottom:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .fbar input[type=text],.fbar select{padding:6px 11px;border:1px solid #ddd;border-radius:6px;font-size:12px;outline:none}
+  .fbar input:focus,.fbar select:focus{border-color:#3B6D11}
+  .bsm{padding:6px 13px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid #ddd;background:#fff}
+  .bsm.p{background:#3B6D11;color:#EAF3DE;border-color:#3B6D11}
+  .bsm.d{background:#FCEBEB;color:#7B1010;border-color:#F09595}
+  .twrap{background:#fff;border:1px solid #e8e8e8;border-radius:10px;overflow:hidden}
+  .thead2{display:flex;align-items:center;padding:12px 14px;border-bottom:1px solid #f0f0f0}
+  .thead2 .tt{font-size:13px;font-weight:600;flex:1}
+  .thead2 .tc{font-size:11px;color:#888}
+  .tscr{overflow-x:auto}
+  .mtbl{width:100%;border-collapse:collapse;font-size:12px}
+  .mtbl thead tr{background:#EAF3DE}
+  .mtbl thead th{padding:8px 12px;text-align:left;font-size:10px;font-weight:700;color:#27500A;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+  .mtbl tbody tr{border-top:1px solid #f5f5f5}
+  .mtbl tbody tr:hover{background:#fafaf8}
+  .mtbl td{padding:9px 12px;color:#333;vertical-align:middle}
+  .bdg{display:inline-flex;align-items:center;padding:2px 9px;border-radius:99px;font-size:10px;font-weight:700}
+  .bdg.p{background:#EAF3DE;color:#27500A}.bdg.f{background:#FCEBEB;color:#A32D2D}
+  .nodata{text-align:center;padding:40px;color:#bbb;font-size:13px}
+  .aform{background:#fff;border:1px solid #e8e8e8;border-radius:10px;padding:1.1rem;margin-bottom:12px;display:none}
+  .aform.show{display:block}
+  .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:10px}
+  .fg2{display:flex;flex-direction:column;gap:3px}
+  .fg2 label{font-size:11px;font-weight:600;color:#555}
+  .fg2 input,.fg2 select{padding:7px 10px;border:1px solid #ddd;border-radius:6px;font-size:12px;outline:none}
 </style>
 </head>
 <body>
@@ -145,6 +199,7 @@
     </div>
   </div>
   <button class="btn-primary" style="width:100%" onclick="goRegister()">Vào bài kiểm tra →</button>
+  <button class="btn-secondary" style="width:100%;margin-top:8px;font-size:12px;color:#888" onclick="goMgrLogin()">🔒 Trang quản lý</button>
 </div>
 
 <!-- LESSONS -->
@@ -443,6 +498,78 @@
   </div>
 </div>
 
+
+<!-- ── LOGIN MANAGER ── -->
+<div id="pg-login" class="page" style="padding:60px 16px;display:flex;align-items:center;justify-content:center;min-height:60vh">
+  <div class="lcard">
+    <div class="llogo">
+      <img id="logo-mgr-login" src="" alt="Phuc Tea">
+      <div class="lbrand">Phúc Tea</div>
+      <div class="lsub">Trang quản lý — chỉ dành cho quản trị viên</div>
+    </div>
+    <div style="font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:1rem;text-align:center">Đăng nhập</div>
+    <div class="lerr" id="lerr">Sai tên đăng nhập hoặc mật khẩu!</div>
+    <div class="lfield"><label>Tên đăng nhập</label><input type="text" id="minp-user" placeholder="admin hoặc ngoc" autocomplete="username" onkeydown="if(event.key==='Enter')document.getElementById('minp-pass').focus()"></div>
+    <div class="lfield"><label>Mật khẩu</label><input type="password" id="minp-pass" placeholder="Nhập mật khẩu" autocomplete="current-password" onkeydown="if(event.key==='Enter')doMgrLogin()"></div>
+    <button class="btn-primary" style="width:100%;margin-top:.5rem" onclick="doMgrLogin()">Đăng nhập →</button>
+    <div style="margin-top:1rem;text-align:center"><button class="btn-secondary" style="font-size:12px" onclick="goHome()">← Về trang học</button></div>
+  </div>
+</div>
+
+<!-- ── MANAGER DASHBOARD ── -->
+<div id="pg-manager" class="page">
+  <div class="mbar">
+    <img id="logo-mgr-top" src="" alt="PT">
+    <div><div class="mbrand">Phúc Tea — Quản Lý Đào Tạo</div><div class="msub">Kết quả kiểm tra CSKH</div></div>
+    <div class="sp"></div>
+    <span style="font-size:11px;color:#C0DD97;margin-right:8px">CHÂU THÚY NGỌC</span>
+    <button class="mbtn" onclick="mgrLogout()">Đăng xuất</button>
+    <button class="mbtn" onclick="goHome()" style="margin-left:4px">← Trang học</button>
+  </div>
+  <div class="mbody">
+    <div class="srow">
+      <div class="sc"><div class="sl">Tổng người thi</div><div class="sv" id="m-total">0</div></div>
+      <div class="sc g"><div class="sl">Đã đạt</div><div class="sv" id="m-pass">0</div></div>
+      <div class="sc r"><div class="sl">Chưa đạt</div><div class="sv" id="m-fail">0</div></div>
+      <div class="sc a"><div class="sl">Tỉ lệ đạt</div><div class="sv" id="m-rate">—</div></div>
+    </div>
+    <div class="fbar">
+      <input type="text" id="mf-search" placeholder="Tìm tên / chi nhánh..." oninput="mgrRender()">
+      <select id="mf-result" onchange="mgrRender()">
+        <option value="">Tất cả kết quả</option>
+        <option value="ĐẠT">✅ ĐẠT</option>
+        <option value="CHƯA ĐẠT">❌ CHƯA ĐẠT</option>
+      </select>
+      <select id="mf-branch" onchange="mgrRender()"><option value="">Tất cả chi nhánh</option></select>
+      <div style="flex:1"></div>
+      <button class="bsm" onclick="mgrToggleAdd()">+ Thêm</button>
+      <button class="bsm p" onclick="mgrExport()">⬇ CSV</button>
+      <button class="bsm d" onclick="mgrClear()">Xoá tất cả</button>
+    </div>
+    <div class="aform" id="m-aform">
+      <div style="font-size:13px;font-weight:600;margin-bottom:.75rem">Thêm kết quả thủ công</div>
+      <div class="fgrid">
+        <div class="fg2"><label>Họ và tên *</label><input type="text" id="maf-name" placeholder="Nguyễn Văn A"></div>
+        <div class="fg2"><label>Chi nhánh *</label><input type="text" id="maf-branch" placeholder="Phúc Tea Sóc Trăng"></div>
+        <div class="fg2"><label>Gmail</label><input type="email" id="maf-email" placeholder="example@gmail.com"></div>
+        <div class="fg2"><label>Số câu đúng (/15) *</label><input type="number" id="maf-score" min="0" max="15" placeholder="14"></div>
+        <div class="fg2"><label>Ghi chú</label><input type="text" id="maf-note" placeholder="Tuần 1..."></div>
+      </div>
+      <div style="display:flex;gap:8px"><button class="bsm p" onclick="mgrAddManual()">Lưu</button><button class="bsm" onclick="mgrToggleAdd()">Huỷ</button></div>
+    </div>
+    <div class="twrap">
+      <div class="thead2"><div class="tt">Danh sách kết quả</div><div class="tc" id="m-cnt">0 kết quả</div></div>
+      <div class="tscr">
+        <table class="mtbl">
+          <thead><tr><th>#</th><th>Họ tên</th><th>Chi nhánh</th><th>Gmail</th><th>Điểm</th><th>%</th><th>Kết quả</th><th>Thời gian</th><th>Ghi chú</th><th></th></tr></thead>
+          <tbody id="m-tbody"></tbody>
+        </table>
+      </div>
+      <div class="nodata" id="m-nodata" style="display:none">Chưa có kết quả nào. Đối tác hoàn thành bài kiểm tra sẽ hiện ở đây.</div>
+    </div>
+    <div style="font-size:11px;color:#bbb;text-align:center;margin-top:12px;padding-bottom:20px">Dữ liệu lưu trong trình duyệt này. Dùng nút CSV để backup.</div>
+  </div>
+</div>
 </div>
 <script>
 // ── Logo base64 ──
@@ -654,6 +781,13 @@ async function saveToSheet(data){
       if(el&&el.style.display!=='none') el.textContent='⚠️ Không gửi được — vui lòng chụp màn hình và gửi cho quản lý.';
     });
   }
+  // Lưu vào localStorage để trang quản lý tự cập nhật
+  try{
+    const KEY='pt_results_v1';
+    const arr=JSON.parse(localStorage.getItem(KEY)||'[]');
+    arr.push(data);
+    localStorage.setItem(KEY,JSON.stringify(arr));
+  }catch(e2){}
 }
 
 function printCert(){
@@ -663,6 +797,138 @@ function printCert(){
   win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Chứng Nhận — Phúc Tea</title><style>*{box-sizing:border-box;margin:0;padding:0}body{background:#f0f0e8;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;font-family:-apple-system,BlinkMacSystemFont,sans-serif}#wrap{max-width:680px;width:100%}@media print{body{background:#fff;padding:0}}</style></head><body><div id="wrap">'+cert.outerHTML+'</div><script>window.onload=function(){setTimeout(function(){window.print();},400);}<\/script></body></html>');
   win.document.close();
 }
+// ══════════════════════════════
+//  MANAGER MODULE
+// ══════════════════════════════
+const MGR_KEY='pt_results_v1';
+const MGR_USERS={'admin':'173b323fe30b11e3001cc65623c9b04a5ab1d4374d847d9911e4b2b5e4d07bd1','ngoc':'173b323fe30b11e3001cc65623c9b04a5ab1d4374d847d9911e4b2b5e4d07bd1'};
+
+function goMgrLogin(){showPage('pg-login');setTimeout(()=>document.getElementById('minp-user').focus(),100);}
+
+async function sha256m(s){
+  const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+
+async function doMgrLogin(){
+  const u=(document.getElementById('minp-user').value||'').trim().toLowerCase();
+  const p=document.getElementById('minp-pass').value||'';
+  const h=await sha256m(p);
+  if(MGR_USERS[u]&&MGR_USERS[u]===h){
+    sessionStorage.setItem('pt_mgr','1');
+    document.getElementById('lerr').classList.remove('show');
+    showPage('pg-manager');
+    mgrInit();
+  } else {
+    document.getElementById('lerr').classList.add('show');
+    document.getElementById('minp-pass').value='';
+    document.getElementById('minp-pass').focus();
+  }
+}
+
+function mgrLogout(){
+  sessionStorage.removeItem('pt_mgr');
+  showPage('pg-home');
+}
+
+function mgrLoad(){try{return JSON.parse(localStorage.getItem(MGR_KEY)||'[]');}catch(e){return [];}}
+function mgrSave(d){localStorage.setItem(MGR_KEY,JSON.stringify(d));}
+
+function mgrInit(){
+  // Set logos
+  ['logo-mgr-login','logo-mgr-top'].forEach(id=>{const el=document.getElementById(id);if(el)el.src=LOGO_SRC;});
+  mgrStats();mgrRender();mgrBranchFilter();
+}
+
+function mgrStats(){
+  const d=mgrLoad();
+  const p=d.filter(r=>r.ketQua==='ĐẠT').length;
+  document.getElementById('m-total').textContent=d.length;
+  document.getElementById('m-pass').textContent=p;
+  document.getElementById('m-fail').textContent=d.length-p;
+  document.getElementById('m-rate').textContent=d.length?Math.round(p/d.length*100)+'%':'—';
+}
+
+function mgrBranchFilter(){
+  const d=mgrLoad();
+  const bs=[...new Set(d.map(r=>r.chiNhanh).filter(Boolean))].sort();
+  const sel=document.getElementById('mf-branch');
+  const cur=sel.value;
+  sel.innerHTML='<option value="">Tất cả chi nhánh</option>'+bs.map(b=>`<option value="${mEsc(b)}"${b===cur?' selected':''}>${mEsc(b)}</option>`).join('');
+}
+
+function mgrRender(){
+  const d=mgrLoad();
+  const s=(document.getElementById('mf-search').value||'').toLowerCase();
+  const fr=document.getElementById('mf-result').value;
+  const fb=document.getElementById('mf-branch').value;
+  let rows=d.filter(r=>{
+    const ms=!s||(r.hoTen||'').toLowerCase().includes(s)||(r.chiNhanh||'').toLowerCase().includes(s)||(r.gmail||'').toLowerCase().includes(s);
+    return ms&&(!fr||r.ketQua===fr)&&(!fb||r.chiNhanh===fb);
+  }).slice().reverse();
+  document.getElementById('m-cnt').textContent=rows.length+' kết quả';
+  const nd=document.getElementById('m-nodata');
+  nd.style.display=rows.length?'none':'block';
+  document.getElementById('m-tbody').innerHTML=rows.map((r,i)=>`<tr>
+    <td style="color:#aaa;font-size:10px">${rows.length-i}</td>
+    <td style="font-weight:600">${mEsc(r.hoTen||'')}</td>
+    <td>${mEsc(r.chiNhanh||'')}</td>
+    <td style="font-size:11px;color:#888">${mEsc(r.gmail||'')}</td>
+    <td style="font-weight:600">${r.soCauDung||'—'}/${r.tongCau||15}</td>
+    <td style="font-weight:700;color:${r.ketQua==='ĐẠT'?'#27500A':'#c0392b'}">${r.phanTram||'—'}</td>
+    <td><span class="bdg ${r.ketQua==='ĐẠT'?'p':'f'}">${r.ketQua==='ĐẠT'?'✅ ĐẠT':'❌ CHƯA ĐẠT'}</span></td>
+    <td style="font-size:11px;color:#888;white-space:nowrap">${mEsc(r.thoiGian||'')}</td>
+    <td style="font-size:11px;color:#aaa">${mEsc(r.ghiChu||'')}</td>
+    <td><button onclick="mgrDel(${d.indexOf(r)})" style="background:none;border:none;cursor:pointer;color:#ddd;font-size:14px;padding:2px 6px" title="Xoá">✕</button></td>
+  </tr>`).join('');
+}
+
+function mEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function mgrDel(idx){
+  if(!confirm('Xoá kết quả này?'))return;
+  const d=mgrLoad();d.splice(idx,1);mgrSave(d);
+  mgrStats();mgrRender();mgrBranchFilter();
+}
+
+function mgrClear(){
+  if(!confirm('Xoá TẤT CẢ? Không thể khôi phục!'))return;
+  mgrSave([]);mgrStats();mgrRender();mgrBranchFilter();
+}
+
+function mgrToggleAdd(){document.getElementById('m-aform').classList.toggle('show');}
+
+function mgrAddManual(){
+  const name=(document.getElementById('maf-name').value||'').trim();
+  const branch=(document.getElementById('maf-branch').value||'').trim();
+  const email=(document.getElementById('maf-email').value||'').trim();
+  const score=parseInt(document.getElementById('maf-score').value);
+  const note=(document.getElementById('maf-note').value||'').trim();
+  if(!name||!branch||isNaN(score)){alert('Điền đủ họ tên, chi nhánh và số câu đúng!');return;}
+  const pct=Math.round(score/15*100);
+  const d=mgrLoad();
+  d.push({thoiGian:new Date().toLocaleString('vi-VN'),hoTen:name,chiNhanh:branch,gmail:email,soCauDung:score,tongCau:15,phanTram:pct+'%',ketQua:pct>=90?'ĐẠT':'CHƯA ĐẠT',ghiChu:note});
+  mgrSave(d);
+  ['maf-name','maf-branch','maf-email','maf-score','maf-note'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('m-aform').classList.remove('show');
+  mgrStats();mgrRender();mgrBranchFilter();
+}
+
+function mgrExport(){
+  const d=mgrLoad();
+  if(!d.length){alert('Chưa có dữ liệu!');return;}
+  const cols=['Thời gian','Họ tên','Chi nhánh','Gmail','Số câu đúng','Tổng câu','Phần trăm','Kết quả','Ghi chú'];
+  const rows=d.map(r=>[r.thoiGian,r.hoTen,r.chiNhanh,r.gmail,r.soCauDung,r.tongCau,r.phanTram,r.ketQua,r.ghiChu||''].map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(','));
+  const csv='\uFEFF'+cols.join(',')+'\n'+rows.join('\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  a.download='PhucTea_KetQua_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+// Lắng nghe khi có result mới (cùng tab)
+const _origMgrSave = mgrSave;
+
 </script>
 </body>
 </html>
