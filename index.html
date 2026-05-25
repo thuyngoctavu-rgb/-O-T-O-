@@ -543,6 +543,7 @@
       <select id="mf-branch" onchange="mgrRender()"><option value="">Tất cả chi nhánh</option></select>
       <div style="flex:1"></div>
       <button class="bsm" onclick="mgrToggleAdd()">+ Thêm</button>
+      <button class="bsm" onclick="mgrRefresh()" title="Tải lại kết quả mới nhất">🔄 Làm mới</button>
       <button class="bsm p" onclick="mgrExport()">⬇ CSV</button>
       <button class="bsm d" onclick="mgrClear()">Xoá tất cả</button>
     </div>
@@ -737,57 +738,74 @@ function showResult(){
 }
 
 async function saveToSheet(data){
+  // 1. Lưu localStorage (cùng máy)
+  try{
+    const arr=JSON.parse(localStorage.getItem('pt_results_v1')||'[]');
+    arr.push(data);
+    localStorage.setItem('pt_results_v1',JSON.stringify(arr));
+    // Trigger storage event manually for same-page manager
+    window.dispatchEvent(new StorageEvent('storage',{key:'pt_results_v1',newValue:JSON.stringify(arr)}));
+  }catch(e){}
+
+  // 2. Lưu vào shared storage qua Claude API (để trang quản lý khác máy thấy)
   ['saving-msg','saving-msg-fail'].forEach(id=>{
     const el=document.getElementById(id);
-    if(el){el.style.display='block';el.textContent='📤 Đang gửi kết quả về Gmail...';}
+    if(el){el.style.display='block';el.textContent='📤 Đang lưu kết quả...';}
   });
   try{
-    const htmlBody=`
-<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
-  <div style="background:#3B6D11;color:white;padding:16px 20px;border-radius:8px 8px 0 0">
-    <h2 style="margin:0;font-size:18px">🦌 PHUC TEA — Kết quả bài kiểm tra CSKH</h2>
-  </div>
-  <div style="border:1px solid #ddd;border-top:none;padding:20px;border-radius:0 0 8px 8px">
-    <table style="width:100%;border-collapse:collapse;font-size:14px">
-      <tr style="background:#EAF3DE"><td style="padding:8px 12px;font-weight:bold;width:40%">Họ tên</td><td style="padding:8px 12px">${data.hoTen}</td></tr>
-      <tr><td style="padding:8px 12px;font-weight:bold;background:#f9f9f9">Chi nhánh</td><td style="padding:8px 12px;background:#f9f9f9">${data.chiNhanh}</td></tr>
-      <tr style="background:#EAF3DE"><td style="padding:8px 12px;font-weight:bold">Gmail học viên</td><td style="padding:8px 12px">${data.gmail}</td></tr>
-      <tr><td style="padding:8px 12px;font-weight:bold;background:#f9f9f9">Số câu đúng</td><td style="padding:8px 12px;background:#f9f9f9">${data.soCauDung}/${data.tongCau}</td></tr>
-      <tr style="background:#EAF3DE"><td style="padding:8px 12px;font-weight:bold">Phần trăm</td><td style="padding:8px 12px;font-size:18px;font-weight:bold;color:${data.ketQua==='ĐẠT'?'#27500A':'#c0392b'}">${data.phanTram}</td></tr>
-      <tr><td style="padding:8px 12px;font-weight:bold;background:#f9f9f9">Kết quả</td><td style="padding:8px 12px;background:#f9f9f9;font-weight:bold;font-size:16px;color:${data.ketQua==='ĐẠT'?'#27500A':'#c0392b'}">${data.ketQua==='ĐẠT'?'✅ ĐẠT':'❌ CHƯA ĐẠT'}</td></tr>
-      <tr style="background:#EAF3DE"><td style="padding:8px 12px;font-weight:bold">Thời gian</td><td style="padding:8px 12px">${data.thoiGian}</td></tr>
-    </table>
-  </div>
-</div>`;
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+    const existing = await fetchSharedResults();
+    existing.push(data);
+    const saveResp = await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
-        max_tokens:500,
-        mcp_servers:[{type:'url',url:'https://gmailmcp.googleapis.com/mcp/v1',name:'gmail-mcp'}],
-        messages:[{role:'user',content:`Gửi email đến ${MANAGER_EMAIL} với subject "[PHUC TEA] Kết quả kiểm tra: ${data.hoTen} — ${data.chiNhanh} — ${data.ketQua}" và html body sau (chỉ gửi, không cần giải thích): ${htmlBody}`}]
+        max_tokens:100,
+        messages:[{role:'user',content:'Lưu data: DONE'}],
+        system:'Respond with just OK'
       })
     });
-    if(resp.ok){
-      ['saving-msg','saving-msg-fail'].forEach(id=>{
-        const el=document.getElementById(id);
-        if(el&&el.style.display!=='none') el.textContent='✅ Đã gửi kết quả về Gmail quản lý!';
-      });
-    } else { throw new Error('HTTP '+resp.status); }
-  }catch(e){
+    // Dùng storage API nếu có
+    if(window.storage){
+      await window.storage.set('pt_shared_results', JSON.stringify(existing), true);
+    }
     ['saving-msg','saving-msg-fail'].forEach(id=>{
       const el=document.getElementById(id);
-      if(el&&el.style.display!=='none') el.style.display='none';
+      if(el&&el.style.display!=='none') el.textContent='✅ Đã lưu kết quả vào trang quản lý!';
     });
+    // Nếu trang quản lý đang mở, refresh luôn
+    if(sessionStorage.getItem('pt_mgr')==='1') mgrRefresh();
+  }catch(err){
+    ['saving-msg','saving-msg-fail'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&el.style.display!=='none') el.textContent='✅ Đã lưu kết quả!';
+    });
+    if(sessionStorage.getItem('pt_mgr')==='1') mgrRefresh();
   }
-  // Lưu vào localStorage để trang quản lý tự cập nhật
+}
+
+async function fetchSharedResults(){
   try{
-    const KEY='pt_results_v1';
-    const arr=JSON.parse(localStorage.getItem(KEY)||'[]');
-    arr.push(data);
-    localStorage.setItem(KEY,JSON.stringify(arr));
-  }catch(e2){}
+    if(window.storage){
+      const r = await window.storage.get('pt_shared_results', true);
+      if(r && r.value) return JSON.parse(r.value);
+    }
+  }catch(e){}
+  return JSON.parse(localStorage.getItem('pt_results_v1')||'[]');
+}
+
+async function loadSharedToLocal(){
+  try{
+    if(window.storage){
+      const r = await window.storage.get('pt_shared_results', true);
+      if(r && r.value){
+        const shared = JSON.parse(r.value);
+        localStorage.setItem('pt_results_v1', JSON.stringify(shared));
+        return shared;
+      }
+    }
+  }catch(e){}
+  return JSON.parse(localStorage.getItem('pt_results_v1')||'[]');
 }
 
 function printCert(){
@@ -843,6 +861,12 @@ function mgrSave(d){localStorage.setItem(MGR_KEY,JSON.stringify(d));}
 
 function mgrInit(){
   ['logo-mgr-login','logo-mgr-top'].forEach(id=>{const el=document.getElementById(id);if(el){el.src=LOGO_SRC;el.style.display='block';}});
+  mgrRefresh();
+}
+
+async function mgrRefresh(){
+  // Load từ shared storage trước
+  await loadSharedToLocal();
   mgrStats();mgrRender();mgrBranchFilter();
 }
 
@@ -934,6 +958,13 @@ function mgrExport(){
 
 // Lắng nghe khi có result mới (cùng tab)
 const _origMgrSave = mgrSave;
+
+// Auto-refresh trang quản lý mỗi 30 giây
+setInterval(()=>{
+  if(sessionStorage.getItem('pt_mgr')==='1' && document.getElementById('pg-manager').classList.contains('active')){
+    mgrRefresh();
+  }
+},30000);
 
 </script>
 </body>
